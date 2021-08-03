@@ -1,10 +1,10 @@
-const post = async (_, { id }, { fetch }) => {
-  const posts = await fetch(`http://localhost:3000/posts/${id}`)
+const post = async (_, { id }, { getPosts }) => {
+  const posts = await getPosts(id)
   return posts.json()
 }
 
-const posts = async (_, __, { fetch }) => {
-  const posts = await fetch('http://localhost:3000/posts')
+const posts = async (_, __, { getPosts }) => {
+  const posts = await getPosts()
   return posts.json()
 }
 
