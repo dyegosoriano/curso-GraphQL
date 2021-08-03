@@ -1,15 +1,11 @@
-const post = () => {
-  return { id: '0', title: 'Título 01' }
+const post = async (_, { id }, { fetch }) => {
+  const posts = await fetch(`http://localhost:3000/posts/${id}`)
+  return posts.json()
 }
 
-const posts = () => {
-  return [
-    { id: '1', title: 'Título 01' },
-    { id: '2', title: 'Título 02' },
-    { id: '3', title: 'Título 03' },
-    { id: '4', title: 'Título 04' },
-    { id: '5', title: 'Título 05' }
-  ]
+const posts = async (_, __, { fetch }) => {
+  const posts = await fetch('http://localhost:3000/posts')
+  return posts.json()
 }
 
 export const postResolvers = {
