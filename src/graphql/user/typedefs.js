@@ -2,11 +2,9 @@ import { gql } from 'apollo-server-core'
 
 export const userTypeDefs = gql`
   extend type Query {
-    user(id: ID!): UserResult!
+    user(id: ID!): User!
     users(input: ApiFiltersInput): [User!]!
   }
-
-  union UserResult = User | UserNotFoundError
 
   type User {
     id: ID!
@@ -14,10 +12,5 @@ export const userTypeDefs = gql`
     lastName: String!
     userName: String!
     createdAt: String!
-  }
-
-  type UserNotFoundError {
-    statusCode: Int!
-    message: String!
   }
 `
