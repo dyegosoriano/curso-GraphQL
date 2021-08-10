@@ -1,6 +1,6 @@
 import DataLoader from 'dataloader'
 
-export const makeDataLoader = getUsers => {
+export const makeUserDataLoader = getUsers => {
   return new DataLoader(async ids => {
     const urlIds = ids.join('&id=')
 
