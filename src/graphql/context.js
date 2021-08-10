@@ -1,4 +1,4 @@
-import { makeDataLoader } from './user/dataloader'
+import { makeDataLoader } from './user/dataloaders'
 import { getUsers } from './user/utils'
 import { getPosts } from './post/utils'
 
