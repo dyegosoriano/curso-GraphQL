@@ -18,11 +18,9 @@ const users = async (_, args, context) => {
   return users.json()
 }
 
-const posts = (parent, _, context) => {
-  const { postDataLoader } = context
+const posts = (parent, _, { dataSources }) => {
   const { id } = parent
-
-  return postDataLoader.load(id)
+  return dataSources.postApi.bachLoadByUsersId(id)
 }
 
 export const userResolvers = {
