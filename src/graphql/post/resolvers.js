@@ -1,21 +1,11 @@
-const post = async (_, args, context) => {
-  const { getPosts } = context
-  const { id } = args
-
-  const response = await getPosts(id)
-  const post = await response.json()
-
+const post = async (_, { id }, { dataSources }) => {
+  const post = dataSources.postApi.getPost(id)
   return post
 }
 
-const posts = async (_, args, context) => {
-  const { getPosts } = context
-  const { input } = args
-
-  const apiFilterInput = new URLSearchParams(input)
-  const posts = await getPosts('?' + apiFilterInput)
-
-  return posts.json()
+const posts = async (_, { input }, { dataSources }) => {
+  const posts = dataSources.postApi.getPosts(input)
+  return posts
 }
 
 const user = async (parent, _, context) => {
