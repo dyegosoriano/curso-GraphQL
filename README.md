@@ -2,15 +2,12 @@
   <img src="./readme/graphql.svg" />
 </h1>
 
-<h3 align="center">
+<h2 align="center">Aula 02</h2>
+<h3 align="center">Material resultado do curso de desenvolvimento com GraphQL</h3>
 
-Material resultado do curso de desenvolvimento com GraphQL
+## **:rocket: Oque foi ensinado?**
 
-</h3>
-
-## **:rocket: OBJETIVO**
-
-O projeto tem como finalidade **estabelecer uma conexão** entre **empresas e/ou entidades que coletam resíduos** (orgânicos e inorgânicos) **às pessoas e/ou entidades que necessitam constantemente descartar esses resíduos**. Solucionando um grande problema recorrente que é o **descarte inadequado do lixo**, facilitando o processo de recliclagem e reutilização.
+Nessa aula foi ensinado sobre relacionamentos, evitar duplicação de chamadas usando os batching do Dataloaders e fazendo requisições a api externa com o Datasource.
 
 ## **:wine_glass: COMO UTILIZAR**
 

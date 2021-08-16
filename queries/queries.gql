@@ -1,16 +1,17 @@
 query GET_POST($id: ID! = "") {
   post(id: $id) {
-    ... on Post {
+    id
+    userId
+    indexRef
+    title
+    body
+    createdAt
+    user {
       id
-      indexRef
-      title
-      body
+      firstName
+      lastName
+      userName
       createdAt
-    }
-
-    ... on PostNotFoundError {
-      statusCode
-      message
     }
   }
 }
@@ -18,25 +19,35 @@ query GET_POST($id: ID! = "") {
 query GET_POSTS($sort: String = "indexRef", $order: FilterOrder, $start: Int = 0, $limit: Int = 5) {
   posts(input: { _sort: $sort, _order: $order, _start: $start, _limit: $limit }) {
     id
+    userId
     indexRef
     title
     body
-  }
-}
-
-query GET_USER($id: ID! = "") {
-  user(id: $id) {
-    ... on User {
+    createdAt
+    user {
       id
       firstName
       lastName
       userName
       createdAt
     }
+  }
+}
 
-    ... on UserNotFoundError {
-      statusCode
-      message
+query GET_USER($id: ID! = "") {
+  user(id: $id) {
+    id
+    firstName
+    lastName
+    userName
+    createdAt
+    posts {
+      id
+      userId
+      indexRef
+      title
+      body
+      createdAt
     }
   }
 }
@@ -48,5 +59,13 @@ query GET_USERS($sort: String = "indexRef", $order: FilterOrder, $start: Int = 0
     lastName
     userName
     createdAt
+    posts {
+      id
+      userId
+      indexRef
+      title
+      body
+      createdAt
+    }
   }
 }
