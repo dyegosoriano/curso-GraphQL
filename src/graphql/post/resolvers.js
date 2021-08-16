@@ -8,11 +8,10 @@ const posts = async (_, { input }, { dataSources }) => {
   return posts
 }
 
-const user = async (parent, _, context) => {
-  const { userDataLoader } = context
+const user = async (parent, _, { dataSources }) => {
   const { userId } = parent
 
-  return userDataLoader.load(userId)
+  return dataSources.userApi.bachLoadByUsersId(userId)
 }
 
 export const postResolvers = {

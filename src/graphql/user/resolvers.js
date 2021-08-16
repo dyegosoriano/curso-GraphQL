@@ -1,21 +1,11 @@
-const user = async (_, args, context) => {
-  const { getUsers } = context
-  const { id } = args
-
-  const response = await getUsers(id)
-  const user = await response.json()
-
+const user = async (_, { id }, { dataSources }) => {
+  const user = await dataSources.userApi.getUser(id)
   return user
 }
 
-const users = async (_, args, context) => {
-  const { getUsers } = context
-  const { input } = args
-
-  const apiFilterInput = new URLSearchParams(input)
-  const users = await getUsers('?' + apiFilterInput)
-
-  return users.json()
+const users = async (_, { input }, { dataSources }) => {
+  const users = await dataSources.userApi.getUsers(input)
+  return users
 }
 
 const posts = (parent, _, { dataSources }) => {
