@@ -4,11 +4,20 @@ export const createPostFn = async (postData, dataSource) => {
   const postInfo = await createPostInfo(postData, dataSource)
   const { title, body, userId } = postInfo
 
-  if (!title || !body || !userId) {
-    throw new ValidationError('You have to send title, body and userId')
-  }
+  if (!title || !body || !userId) throw new ValidationError('You have to send title, body and userId')
 
   return await dataSource.post('', { ...postInfo })
+}
+
+export const updatePostFn = async (postId, postData, dataSource) => {
+  if (!postId) throw new ValidationError('Missing postId')
+
+  if (postData?.title === '') throw new ValidationError('Missing title')
+  if (postData?.body === '') throw new ValidationError('Missing body')
+
+  if (postData?.userId) await userExist(postData.userId, dataSource)
+
+  return await dataSource.patch(postId, { ...postData })
 }
 
 const userExist = async (userId, dataSource) => {
