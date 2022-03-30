@@ -1,28 +1,26 @@
 // Query resolvers
-const post = async (_, { id }, { dataSources }) => {
-  const post = dataSources.postApi.getPost(id)
-  return post
+const post = async (parent, { id }, { dataSources }, info) => {
+  return await dataSources.postApi.getPost(id)
 }
 
-const posts = async (_, { input }, { dataSources }) => {
-  const posts = dataSources.postApi.getPosts(input)
-  return posts
+const posts = async (parent, { input }, { dataSources }, info) => {
+  return await dataSources.postApi.getPosts(input)
 }
 
 // Mutation resolvers
-const createPost = async (_, { data }, { dataSources }) => {
-  return dataSources.postApi.createPost(data)
+const createPost = async (parent, { data }, { dataSources }, info) => {
+  return await dataSources.postApi.createPost(data)
 }
 
-const updatePost = async (_, { postId, data }, { dataSources }) => {
-  return dataSources.postApi.updatePost(postId, data)
+const updatePost = async (parent, { postId, data }, { dataSources }, info) => {
+  return await dataSources.postApi.updatePost(postId, data)
 }
 
 // Field resolvers
-const user = async (parent, _, { dataSources }) => {
+const user = async (parent, arg, { dataSources }, info) => {
   const { userId } = parent
 
-  return dataSources.userApi.bachLoadByUsersId(userId)
+  return await dataSources.userApi.bachLoadByUsersId(userId)
 }
 
 export const postResolvers = {
