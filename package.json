@@ -17,16 +17,17 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-promise": "^4.2.1",
-    "nodemon": "^2.0.12",
-    "prettier": "^2.4.1",
-    "sucrase": "^3.20.0"
+    "nodemon": "^2.0.15",
+    "prettier": "^2.6.1",
+    "sucrase": "^3.20.3"
   },
   "dependencies": {
-    "apollo-datasource-rest": "^3.1.1",
-    "apollo-server": "^3.1.1",
+    "apollo-datasource-rest": "^3.5.2",
+    "apollo-server": "^3.6.7",
+    "apollo-server-core": "^3.6.7",
     "dataloader": "^2.0.0",
     "dotenv": "^10.0.0",
-    "graphql": "^15.5.1",
+    "graphql": "15.8",
     "json-server": "^0.16.3"
   }
 }
