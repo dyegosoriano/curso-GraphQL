@@ -20,4 +20,4 @@ const server = new ApolloServer({
   }
 })
 
-server.listen(4000).then(({ url }) => console.log(`Server listening on url ${url}`))
+server.listen(4000).then(({ url }) => console.log(`🚀 Server ready at ${url}`))

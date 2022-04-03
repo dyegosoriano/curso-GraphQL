@@ -1,13 +1,21 @@
-const user = async (parent, { id }, { dataSources }, info) => {
+const user = async (parent, arg, context, info) => {
+  const { dataSources } = context
+  const { id } = arg
+
   return await dataSources.userApi.getUser(id)
 }
 
-const users = async (parent, { input }, { dataSources }, info) => {
+const users = async (parent, arg, context, info) => {
+  const { dataSources } = context
+  const { input } = arg
+
   return await dataSources.userApi.getUsers(input)
 }
 
-const posts = (parent, arg, { dataSources }, info) => {
+const posts = (parent, arg, context, info) => {
+  const { dataSources } = context
   const { id } = parent
+
   return dataSources.postApi.bachLoadByUsersId(id)
 }
 
