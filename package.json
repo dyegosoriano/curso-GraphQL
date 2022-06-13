@@ -26,8 +26,8 @@
     "apollo-server": "^3.6.7",
     "apollo-server-core": "^3.6.7",
     "dataloader": "^2.0.0",
-    "dotenv": "^10.0.0",
-    "graphql": "15.8",
-    "json-server": "^0.16.3"
+    "dotenv": "^16.0.0",
+    "graphql": "16.3.0",
+    "json-server": "^0.17.0"
   }
 }
