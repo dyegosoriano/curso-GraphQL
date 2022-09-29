@@ -11,17 +11,17 @@ export class UsersApi extends RESTDataSource {
 
   async getUsers(urlParams = {}) {
     return this.get('', urlParams, {
-      cacheOptions: { ttl: 60 }
+      cacheOptions: { ttl: 60 },
     })
   }
 
-  async getUser(id) {
+  async getUser(id: string) {
     return this.get(id, undefined, {
-      cacheOptions: { ttl: 60 }
+      cacheOptions: { ttl: 60 },
     })
   }
 
-  bachLoadByUsersId(ids) {
+  bachLoadByUsersId(ids: string[]) {
     return this.dataloader.load(ids)
   }
 }

@@ -1,5 +1,13 @@
 import { ValidationError } from 'apollo-server'
 
+const userExist = async (userId: string, dataSource) => {
+  try {
+    await dataSource.context.dataSources.userApi.get(userId)
+  } catch (error) {
+    throw new ValidationError(`User id ${userId} does not exist`)
+  }
+}
+
 export const createPostFn = async (postData, dataSource) => {
   const postInfo = await createPostInfo(postData, dataSource)
   const { title, body, userId } = postInfo
@@ -9,7 +17,7 @@ export const createPostFn = async (postData, dataSource) => {
   return await dataSource.post('', { ...postInfo })
 }
 
-export const updatePostFn = async (postId, postData, dataSource) => {
+export const updatePostFn = async (postId: string, postData, dataSource) => {
   if (!postId) throw new ValidationError('Missing postId')
 
   if (postData?.title === '') throw new ValidationError('Missing title')
@@ -20,12 +28,12 @@ export const updatePostFn = async (postId, postData, dataSource) => {
   return await dataSource.patch(postId, { ...postData })
 }
 
-const userExist = async (userId, dataSource) => {
-  try {
-    await dataSource.context.dataSources.userApi.get(userId)
-  } catch (error) {
-    throw new ValidationError(`User id ${userId} dows not exist`)
-  }
+export const deletePostFn = async (postId: string, dataSource) => {
+  if (!postId) throw new ValidationError('Missing postId')
+
+  const deleted = await dataSource.delete(postId)
+
+  return !!deleted
 }
 
 const createPostInfo = async (postData, dataSource) => {
@@ -36,7 +44,7 @@ const createPostInfo = async (postData, dataSource) => {
   const indexRefPost = await dataSource.get('', {
     _sort: 'indexRef',
     _order: 'desc',
-    _limit: 1
+    _limit: 1,
   })
 
   const indexRef = indexRefPost[0].indexRef + 1
