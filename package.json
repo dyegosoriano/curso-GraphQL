@@ -4,11 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev:server": "NODE_ENV=development nodemon --ignore node_modules --inspect src/server.js",
-    "fake:server": "json-server --watch db.json",
-    "start": "node src/server.js"
+    "dev:server": "ts-node-dev --inspect=0.0.0.0 --respawn --exit-child --watch 'src/**' --transpile-only --ignore-watch node_modules src/server.ts",
+    "fake:server": "json-server --watch db.json"
   },
   "devDependencies": {
+    "@types/node": "^17.0.42",
     "eslint": "^7.32.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-config-standard": "^16.0.3",
@@ -19,7 +19,8 @@
     "eslint-plugin-promise": "^4.2.1",
     "nodemon": "^2.0.15",
     "prettier": "^2.6.1",
-    "sucrase": "^3.20.3"
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.3"
   },
   "dependencies": {
     "apollo-datasource-rest": "^3.5.2",

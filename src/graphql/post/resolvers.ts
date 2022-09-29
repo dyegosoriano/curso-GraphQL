@@ -1,12 +1,14 @@
+import { GraphQLFieldResolver } from 'graphql'
+
 // Query resolvers
-const post = async (parent, arg, context, info) => {
+const post: GraphQLFieldResolver<unknown, any> = async (parent, arg, context, info) => {
   const { dataSources } = context
   const { id } = arg
 
   return await dataSources.postApi.getPost(id)
 }
 
-const posts = async (parent, arg, context, info) => {
+const posts: GraphQLFieldResolver<unknown, any> = async (parent, arg, context, info) => {
   const { dataSources } = context
   const { input } = arg
 
@@ -14,14 +16,14 @@ const posts = async (parent, arg, context, info) => {
 }
 
 // Mutation resolvers
-const createPost = async (parent, arg, context, info) => {
+const createPost: GraphQLFieldResolver<unknown, any> = async (parent, arg, context, info) => {
   const { dataSources } = context
   const { data } = arg
 
   return await dataSources.postApi.createPost(data)
 }
 
-const updatePost = async (parent, arg, context, info) => {
+const updatePost: GraphQLFieldResolver<unknown, any> = async (parent, arg, context, info) => {
   const { dataSources } = context
   const { postId, data } = arg
 
@@ -29,7 +31,7 @@ const updatePost = async (parent, arg, context, info) => {
 }
 
 // Field resolvers
-const user = async (parent, arg, context, info) => {
+const user: GraphQLFieldResolver<any, any> = async (parent, arg, context, info) => {
   const { dataSources } = context
   const { userId } = parent
 
@@ -39,5 +41,5 @@ const user = async (parent, arg, context, info) => {
 export const postResolvers = {
   Mutation: { createPost, updatePost },
   Query: { post, posts },
-  Post: { user }
+  Post: { user },
 }

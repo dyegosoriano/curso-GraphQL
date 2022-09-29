@@ -15,9 +15,9 @@ const server = new ApolloServer({
   dataSources: () => {
     return {
       postApi: new PostsApi(),
-      userApi: new UsersApi()
+      userApi: new UsersApi(),
     }
-  }
+  },
 })
 
 server.listen(4000).then(({ url }) => console.log(`🚀 Server ready at ${url}`))
