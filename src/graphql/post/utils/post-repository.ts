@@ -20,10 +20,12 @@ export const createPostFn = async (postData, dataSource) => {
 export const updatePostFn = async (postId: string, postData, dataSource) => {
   if (!postId) throw new ValidationError('Missing postId')
 
-  if (postData?.title === '') throw new ValidationError('Missing title')
-  if (postData?.body === '') throw new ValidationError('Missing body')
+  const { userId, title, body } = postData
 
-  if (postData?.userId) await userExist(postData.userId, dataSource)
+  if (title && title === '') throw new ValidationError('Missing title')
+  if (body && body === '') throw new ValidationError('Missing body')
+
+  if (userId && userId) await userExist(postData.userId, dataSource)
 
   return await dataSource.patch(postId, { ...postData })
 }

@@ -1,7 +1,7 @@
 import { RESTDataSource } from 'apollo-datasource-rest'
 
-import { makePostDataLoader } from './dataloaders'
 import { createPostFn, deletePostFn, updatePostFn } from './utils/post-repository'
+import { makePostDataLoader } from './dataloaders'
 
 export class PostsApi extends RESTDataSource {
   constructor() {
