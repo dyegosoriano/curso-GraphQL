@@ -2,9 +2,11 @@ import 'dotenv/config'
 
 import { ApolloServer } from 'apollo-server'
 
-import { context } from './graphql/context'
-import { PostsApi } from './graphql/post/datasources'
 import { resolvers, typeDefs } from './graphql/schema'
+import { context } from './graphql/context'
+
+import { LoginApi } from './graphql/login/datasources'
+import { PostsApi } from './graphql/post/datasources'
 import { UsersApi } from './graphql/user/datasources'
 
 const server = new ApolloServer({
@@ -14,6 +16,7 @@ const server = new ApolloServer({
 
   dataSources: () => {
     return {
+      loginApi: new LoginApi(),
       postApi: new PostsApi(),
       userApi: new UsersApi(),
     }

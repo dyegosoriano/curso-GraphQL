@@ -2,12 +2,12 @@ import { UserInputError } from 'apollo-server-core'
 import bcrypt from 'bcryptjs'
 
 interface IComparePassword {
-  passwordHash: string
+  password_hash: string
   password: string
 }
 
-export const passwordCompare = async ({ password, passwordHash }: IComparePassword): Promise<boolean> => {
-  return await bcrypt.compare(password, passwordHash)
+export const passwordCompare = async ({ password, password_hash }: IComparePassword): Promise<boolean> => {
+  return await bcrypt.compare(password, password_hash)
 }
 
 export const passwordHash = async (password: string): Promise<string> => {

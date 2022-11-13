@@ -9,6 +9,9 @@ import { postTypeDefs } from './post/typedefs'
 import { userResolvers } from './user/resolvers'
 import { userTypeDefs } from './user/typedefs'
 
+import { loginResolvers } from './login/resolvers'
+import { loginTypeDefs } from './login/typedefs'
+
 const rootTypeDefs = gql`
   type Mutation {
     _empty: Boolean
@@ -24,5 +27,5 @@ const rootResolvers = {
   Query: { _empty: () => true },
 }
 
-export const resolvers = [rootResolvers, userResolvers, postResolvers, apiFilterResolvers]
-export const typeDefs = [rootTypeDefs, userTypeDefs, postTypeDefs, apiFiltersTypeDefs]
+export const resolvers = [rootResolvers, userResolvers, postResolvers, apiFilterResolvers, loginResolvers]
+export const typeDefs = [rootTypeDefs, userTypeDefs, postTypeDefs, apiFiltersTypeDefs, loginTypeDefs]
